@@ -28,7 +28,7 @@ app.use(cors({
 }))
 app.use(limiter)
 app.use(express.json())
-app.use(express.static(path.join(process.cwd(), '../client/build')))
+app.use(express.static(path.join(process.cwd(), './client/build')))
 app.use(helmet())
 app.use(mongoSanitize())
 app.use(xss())
@@ -44,7 +44,7 @@ app.use("/api/v1/jobs", authenticateUser, jobsRoutes)
 
 // if route is not the same like server route then always redirect to front end app;
 app.get("*", (req, res) => {
-    res.sendFile(path.join(process.cwd(), '../client/build', 'index.html'))
+    res.sendFile(path.join(process.cwd(), './client/build', 'index.html'))
 })
 
 app.use(notFound)
